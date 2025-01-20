@@ -1,6 +1,7 @@
 package com.austinpedicab.shop_manager.security;
 
 import com.austinpedicab.shop_manager.database.dao.UserDAO;
+import com.austinpedicab.shop_manager.database.entity.User;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,24 +23,34 @@ import java.util.Collection;
 public class AuthenticatedUserService {
 
     @Autowired
-    private UserDAO userDAO;
+    private UserDAO userDao;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
+
     public String getCurrentUsername() {
         SecurityContext context = SecurityContextHolder.getContext();
         if (context != null && context.getAuthentication() != null) {
-            if(context.getAuthentication().getPrincipal() instanceof AnonymousAuthenticationToken) {
+            if (context.getAuthentication() instanceof AnonymousAuthenticationToken) {
                 return null;
             } else {
                 final org.springframework.security.core.userdetails.User principal =
                         (org.springframework.security.core.userdetails.User) context.getAuthentication().getPrincipal();
                 return principal.getUsername();
             }
-        } else{
+        } else {
             return null;
         }
+    }
+
+
+    public User loadCurrentUser() {
+        String username = getCurrentUsername();
+        if (username != null) {
+            return userDao.findByEmailIgnoreCase(username);
+        }
+        return null;
     }
 
     public void changeLoggedInUsername(HttpSession session, String username, String unencryptedPassword) {
@@ -48,8 +59,8 @@ public class AuthenticatedUserService {
         SecurityContext sc = SecurityContextHolder.getContext();
         sc.setAuthentication(result);
         session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, sc);
-;
     }
+
 
     public boolean isUserInRole(String role) {
         SecurityContext context = SecurityContextHolder.getContext();
@@ -73,4 +84,7 @@ public class AuthenticatedUserService {
 
         return (authentication != null && authentication.isAuthenticated());
     }
+
 }
+
+

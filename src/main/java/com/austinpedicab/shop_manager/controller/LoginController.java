@@ -46,7 +46,13 @@ public class LoginController {
         } else{
             User user = new User();
             user.setEmail(form.getUsername());
+            String encryptedPassword = passwordEncoder.encode(form.getPassword());
+            user.setPassword(encryptedPassword);
+            userDao.save(user);
+            authenticatedUserService.changeLoggedInUsername(session, form.getUsername(), form.getPassword());
+            response.setViewName("redirect:/");
         }
+        return response;
     }
 
 
