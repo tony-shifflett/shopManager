@@ -3,6 +3,8 @@ package com.austinpedicab.shop_manager.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -15,6 +17,11 @@ public class Pedicab {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
+    //Join To Maintenance Request
+    @OneToMany(mappedBy = "pedicab", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<MaintenanceRequest> maintenanceRequests;
 
     @Column( name = "style")
     private String style;
