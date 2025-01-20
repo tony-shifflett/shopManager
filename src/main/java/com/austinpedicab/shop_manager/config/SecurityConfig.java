@@ -34,7 +34,7 @@ public class SecurityConfig {
 
         http.logout(formlogout -> formlogout
                 .invalidateHttpSession(true)
-                .logoutUrl("/logout/logout")
+                .logoutUrl("/")
                 .logoutSuccessUrl("/")
                 .deleteCookies("username","JSESSIONID")
         );

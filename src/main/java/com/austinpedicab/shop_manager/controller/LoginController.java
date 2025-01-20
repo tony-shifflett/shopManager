@@ -36,6 +36,14 @@ public class LoginController {
         return response;
     }
 
+    @GetMapping("/login/signup")
+    public ModelAndView SignupPage() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("login/signup");
+        return response;
+    }
+
+
     @PostMapping("/login/signupSubmit")
     public ModelAndView signupSubmit(@Valid SignupFormBean form, BindingResult bindingResult, HttpSession session) {
         ModelAndView response = new ModelAndView();
