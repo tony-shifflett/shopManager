@@ -22,6 +22,9 @@ public class Rider {
     @Column( name = "rider_lastname")
     private String lastName;
 
+    @Column (name = "preferred_name")
+    private String preferredName;
+
     @Column (name = "phone")
     private String phone;
 

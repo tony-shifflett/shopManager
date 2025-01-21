@@ -29,14 +29,14 @@ public class LoginController {
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
 
-    @GetMapping("/login/login")
+    @GetMapping("/login")
     public ModelAndView LoginPage() {
         ModelAndView response = new ModelAndView();
         response.setViewName("login/loginPage");
         return response;
     }
 
-    @GetMapping("/login/signup")
+    @GetMapping("/signup")
     public ModelAndView SignupPage() {
         ModelAndView response = new ModelAndView();
         response.setViewName("login/signup");
@@ -44,7 +44,7 @@ public class LoginController {
     }
 
 
-    @PostMapping("/login/signupSubmit")
+    @PostMapping("/signup/signupSubmit")
     public ModelAndView signupSubmit(@Valid SignupFormBean form, BindingResult bindingResult, HttpSession session) {
         ModelAndView response = new ModelAndView();
         if (bindingResult.hasErrors()) {

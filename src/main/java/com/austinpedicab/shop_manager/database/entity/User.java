@@ -22,10 +22,4 @@ public class User {
 
     @Column(name = "password")
     private String password;
-
-    @Column(name = "firstname")
-    private String firstname;
-
-    @Column(name = "lastname")
-    private String lastname;
 }

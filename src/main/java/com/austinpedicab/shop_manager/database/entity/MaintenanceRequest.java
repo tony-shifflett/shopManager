@@ -21,13 +21,14 @@ public class MaintenanceRequest {
 
     //JOIN TO PEDICAB
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedicab")
+    @JoinColumn(name = "pedicab_id")
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Pedicab pedicab;
 
     //JOIN TO RIDER
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rider")
+    @JoinColumn(name = "rider_id")
     @EqualsAndHashCode.Exclude
     @JsonIgnore
     private Rider rider;

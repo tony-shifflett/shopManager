@@ -28,14 +28,16 @@ public class SecurityConfig {
         );
 
         http.formLogin(formLogin -> formLogin
-                .loginPage("/login/login")
+                .loginPage("/login")
                 .loginProcessingUrl("/login/loginSubmit")
+                .defaultSuccessUrl("/index", true)
+                .failureUrl("/login?error=true")
         );
 
         http.logout(formlogout -> formlogout
                 .invalidateHttpSession(true)
-                .logoutUrl("/")
-                .logoutSuccessUrl("/")
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/index")
                 .deleteCookies("username","JSESSIONID")
         );
 

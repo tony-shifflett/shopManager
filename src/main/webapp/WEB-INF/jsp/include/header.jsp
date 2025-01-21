@@ -33,28 +33,17 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/index">Home</a>
                     </li>
-                    <sec:authorize access="hasAuthority('CUSTOMER')">
-                        <%--                        <li class="nav-item">--%>
-                        <%--                            <a class="nav-link" href="/customer/search">Customer Search</a>--%>
-                        <%--                        </li>--%>
-                        <%--                        <li class="nav-item">--%>
-                        <%--                            <a class="nav-link" href="/customer/create">Create Customer</a>--%>
-                        <%--                        </li>--%>
-                        <%--                        <li class="nav-item">--%>
-                        <%--                            <a class="nav-link" href="/customer/ajaxExample">Ajax Example</a>--%>
-                        <%--                        </li>--%>
-                    </sec:authorize>
                     <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/login">Login</a>
+                            <a class="nav-link" href="/login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/signup">Signup</a>
+                            <a class="nav-link" href="/signup">Signup</a>
                         </li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/logout">Logout</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                         <li class="nav-item">
                             <span class="nav-link">
@@ -63,8 +52,16 @@
                         </li>
                     </sec:authorize>
                     <sec:authorize access="hasAnyAuthority('ADMIN')">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Admin Only</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin Tools
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/admin/dashboard">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="/admin/manage-users">Manage Users</a></li>
+                                <li><a class="dropdown-item" href="/admin/settings">Settings</a></li>
+                                <!-- Add more admin links here -->
+                            </ul>
                         </li>
                     </sec:authorize>
                 </ul>

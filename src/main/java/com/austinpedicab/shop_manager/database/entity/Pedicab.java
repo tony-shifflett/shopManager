@@ -26,8 +26,8 @@ public class Pedicab {
     @Column( name = "style")
     private String style;
 
-    @Column (name = "bike_number")
-    private Integer bikeNumber;
+    @Column (name = "pedicab_number")
+    private Integer pedicabNumber;
 
     @Column (name = "in_service")
     private Boolean inService;
