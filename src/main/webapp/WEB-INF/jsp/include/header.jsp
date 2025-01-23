@@ -24,14 +24,14 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Austin Pedicab Company</a>
+            <a class="navbar-brand" href="/">Austin Pedicab Company</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/index">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item">
@@ -59,7 +59,20 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/admin/dashboard">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="/admin/manage-users">Manage Users</a></li>
-                                <li><a class="dropdown-item" href="/admin/settings">Settings</a></li>
+                                <li><a class="dropdown-item" href="/admin/manage-pedicabs">Pedicab Tools</a></li>
+                                <!-- Add more admin links here -->
+                            </ul>
+                        </li>
+                    </sec:authorize>
+                    <sec:authorize access="hasAnyAuthority('RIDER')">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Rider Tools
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/rider/dashboard">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="/rider/update">Account Details</a></li>
+
                                 <!-- Add more admin links here -->
                             </ul>
                         </li>

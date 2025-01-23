@@ -12,7 +12,7 @@
 
 <section class="bg-light2 pt-5 pb-5">
     <div class="container">
-        <form action="/login/signupSubmit" method="post">
+        <form action="/signup/signupSubmit" method="post">
             <div class="mt-3 row justify-content-center">
                 <label for="username" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10 col-lg-6">

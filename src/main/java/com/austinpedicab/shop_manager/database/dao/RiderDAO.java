@@ -12,8 +12,10 @@ public interface RiderDAO extends JpaRepository<Rider, Long> {
 
     List<Rider> findAllOrderByPreferredName(String preferredName);
 
-    List<Rider>findByPreferredName(String preferredName);
+    List<Rider> findByPreferredName(String preferredName);
 
     Rider findById(Integer id);
+
+//    void assignPedicab(Integer pedicabNumber);
 
 }

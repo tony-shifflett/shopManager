@@ -39,7 +39,7 @@ public class MaintenanceRequest {
     @Column(name = "date_closed")
     private LocalDateTime dateClosed;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "details")
+    private String details;
 
 }

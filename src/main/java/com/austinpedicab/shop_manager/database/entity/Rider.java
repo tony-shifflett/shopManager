@@ -16,11 +16,18 @@ public class Rider {
     @Column( name = "id")
     private Integer id;
 
-    @Column( name = "rider_firstname")
+    @OneToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
+
+    @Column( name = "first_name")
     private String firstName;
 
-    @Column( name = "rider_lastname")
+    @Column( name = "last_name")
     private String lastName;
+
+    @Column(name = "isCurrentRider", columnDefinition = "TINYINT")
+    private Boolean isCurrentRider;
 
     @Column (name = "preferred_name")
     private String preferredName;
