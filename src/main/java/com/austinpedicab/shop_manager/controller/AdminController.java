@@ -1,9 +1,11 @@
 package com.austinpedicab.shop_manager.controller;
 
 import com.austinpedicab.shop_manager.database.dao.MaintenanceRequestDAO;
+import com.austinpedicab.shop_manager.database.dao.PedicabDAO;
 import com.austinpedicab.shop_manager.database.dao.RiderDAO;
 import com.austinpedicab.shop_manager.database.dao.UserDAO;
 import com.austinpedicab.shop_manager.database.entity.MaintenanceRequest;
+import com.austinpedicab.shop_manager.database.entity.Pedicab;
 import com.austinpedicab.shop_manager.database.entity.Rider;
 import com.austinpedicab.shop_manager.database.entity.User;
 import com.austinpedicab.shop_manager.security.AuthenticatedUserService;
@@ -26,6 +28,8 @@ public class AdminController {
     private RiderDAO RiderDAO;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private PedicabDAO pedicabDAO;
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
 
@@ -60,6 +64,15 @@ public class AdminController {
             System.out.println(riders);
         }
 
+        return response;
+    }
+
+    @GetMapping("/admin/manage-pedicabs")
+    public ModelAndView managePedicabs(){
+        ModelAndView response = new ModelAndView();
+        response.setViewName("admin/managePedicabs");
+        List<Pedicab> pedicabs = pedicabDAO.findAllPedicabs();
+        response.addObject("pedicabs", pedicabs);
         return response;
     }
 

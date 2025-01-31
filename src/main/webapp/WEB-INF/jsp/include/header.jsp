@@ -72,8 +72,6 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/rider/dashboard">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="/rider/update">Account Details</a></li>
-
-                                <!-- Add more admin links here -->
                             </ul>
                         </li>
                     </sec:authorize>

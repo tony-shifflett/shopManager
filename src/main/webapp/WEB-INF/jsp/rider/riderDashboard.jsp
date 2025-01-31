@@ -7,5 +7,10 @@
             <a href="/rider/maintenanceRequest" class="btn btn-primary">Maintenance</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-auto ms-3 mt-3">
+            <a href="/" class="btn btn-primary">Reserve A Pedicab</a>
+        </div>
+    </div>
 </div>
 <jsp:include page="../include/footer.jsp"/>
